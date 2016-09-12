@@ -32,7 +32,6 @@ import java.util.List;
 public class SiftRecommendFragment extends AbsBaseFragment {
     //定义标题栏的图片 点击弹出dialog
     private ImageView imageView;
-    private AlertDialog alertDialog;
 
     private ListView listView;
     private List<String> datas;
@@ -54,7 +53,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         recyclerView = byview(R.id.sift_title_recycler);
-        siftAllFragment = new SiftAllFragment();
+        siftAllFragment=SiftAllFragment.newInstance("");
         //初始化图片
         imageView = byview(R.id.forum_sift_image);
         //依附的父容器
