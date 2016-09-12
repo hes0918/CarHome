@@ -4,6 +4,7 @@ package com.lanou3g.dllo.athm.controler.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.athm.R;
@@ -12,7 +13,6 @@ import com.lanou3g.dllo.athm.controler.fragment.FindcarFragment;
 import com.lanou3g.dllo.athm.controler.fragment.ForumFragment;
 import com.lanou3g.dllo.athm.controler.fragment.MeFragment;
 import com.lanou3g.dllo.athm.controler.fragment.RecommendFragment;
-
 
 public class MainActivity extends AbsBaseActivity {
    //定义radioGroup
