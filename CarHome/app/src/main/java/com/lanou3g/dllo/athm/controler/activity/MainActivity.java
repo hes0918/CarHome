@@ -1,10 +1,8 @@
 package com.lanou3g.dllo.athm.controler.activity;
 
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.athm.R;
@@ -48,8 +46,8 @@ public class MainActivity extends AbsBaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 //碎片管理者
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
+ android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+ android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
                 switch (checkedId){
                     case R.id.recommend_btn://推荐
                         transaction.replace(R.id.main_home_frgment_view,recommendFragment);
