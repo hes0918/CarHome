@@ -1,7 +1,6 @@
 package com.lanou3g.dllo.athm.controler.fragment.forumfragment;
 
 
-import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -11,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.controler.adapter.ForumDialogAdapter;
-import com.lanou3g.dllo.athm.controler.adapter.SiftRecyclerAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.ForumDialogAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.SiftRecyclerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.utils.OnRvItemClick;
 

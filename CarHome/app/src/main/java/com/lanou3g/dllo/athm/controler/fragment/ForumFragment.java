@@ -1,15 +1,12 @@
 package com.lanou3g.dllo.athm.controler.fragment;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.controler.adapter.ForumPagerAdapter;
-import com.lanou3g.dllo.athm.controler.adapter.RecmdPagerAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.ForumPagerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.forumfragment.HotpasteFragment;
 import com.lanou3g.dllo.athm.controler.fragment.forumfragment.SiftRecommendFragment;
-import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

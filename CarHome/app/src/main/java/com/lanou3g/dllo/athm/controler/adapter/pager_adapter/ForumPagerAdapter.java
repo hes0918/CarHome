@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.athm.controler.adapter;
+package com.lanou3g.dllo.athm.controler.adapter.pager_adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,16 +12,15 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/10.
  */
-public class FindcarPagerAdapter extends FragmentPagerAdapter {
-
+public class ForumPagerAdapter extends FragmentPagerAdapter {
 
     private List<AbsBaseFragment> fragments = new ArrayList<>();
 
-    public void setFindcarFragments(List<AbsBaseFragment> fragments) {
+    public void setForumFragments(List<AbsBaseFragment> fragments) {
         this.fragments = fragments;
         notifyDataSetChanged();
     }
-    public FindcarPagerAdapter(FragmentManager fm) {
+    public ForumPagerAdapter(FragmentManager fm){
         super(fm);
     }
 
@@ -32,6 +31,6 @@ public class FindcarPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-         return fragments == null ? 0 : fragments.size();
+        return fragments == null ? 0 : fragments.size();
     }
 }

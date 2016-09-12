@@ -4,9 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.controler.adapter.FindcarPagerAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.FindcarPagerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.findcarfragment.BrandFragment;
-import com.lanou3g.dllo.athm.controler.fragment.forumfragment.HotpasteFragment;
 
 import java.util.ArrayList;
 import java.util.List;

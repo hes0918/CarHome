@@ -2,7 +2,7 @@ package com.lanou3g.dllo.athm.controler.fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.controler.adapter.RecmdPagerAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.RecmdPagerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.ActorFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.BulletinFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewestFrgment;
@@ -23,6 +23,8 @@ public class RecommendFragment extends AbsBaseFragment {
     private RecmdPagerAdapter adapter ;
 
 
+
+
     @Override
     protected int setLayout() {
         return R.layout.recommend_frgment;
@@ -38,21 +40,22 @@ public class RecommendFragment extends AbsBaseFragment {
    @Override
    protected void initDatas() {
        fragments = new ArrayList<>();
-       fragments.add(new NewestFrgment());
-       fragments.add(new ActorFragment());
-       fragments.add(new BulletinFragment());
-       fragments.add(new VideoFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new NewsFragment());
-       fragments.add(new VideoFragment());
-       fragments.add(new NewsFragment());
+       fragments.add(NewestFrgment.newInstance("最新"));
+       fragments.add(ActorFragment.newInstance("优创"));
+       fragments.add(BulletinFragment.newInstance("快报"));
+       fragments.add(VideoFragment.newInstance("视频"));
+       fragments.add(NewsFragment.newInstance("新闻"));
+       fragments.add(NewsFragment.newInstance("评测"));
+       fragments.add(NewsFragment.newInstance("导购"));
+       fragments.add(NewsFragment.newInstance("行情"));
+       fragments.add(NewsFragment.newInstance("用车"));
+       fragments.add(NewsFragment.newInstance("技术"));
+       fragments.add(NewsFragment.newInstance("文化"));
+       fragments.add(NewsFragment.newInstance("改装"));
+       fragments.add(NewsFragment.newInstance("游记"));
+       fragments.add(NewsFragment.newInstance("原创视频"));
+       fragments.add(NewsFragment.newInstance("说客"));
+
        adapter = new RecmdPagerAdapter(getChildFragmentManager());
        adapter.setFragments(fragments);
 //        绑定适配器

@@ -1,9 +1,7 @@
-package com.lanou3g.dllo.athm.controler.adapter;
+package com.lanou3g.dllo.athm.controler.adapter.pager_adapter;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
