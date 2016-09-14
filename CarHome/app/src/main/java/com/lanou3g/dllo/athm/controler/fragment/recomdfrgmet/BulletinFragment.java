@@ -7,6 +7,7 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 推荐-快报
  */
 public class BulletinFragment extends AbsBaseFragment {
     public static BulletinFragment newInstance(String str) {

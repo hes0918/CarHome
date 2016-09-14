@@ -5,6 +5,7 @@ import android.content.Context;
 
 /**
  * Created by dllo on 16/9/8.
+ * 全局上下文对象
  */
 public class CarApp extends Application{
     private static Context context;

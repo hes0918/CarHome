@@ -1,5 +1,7 @@
 package com.lanou3g.dllo.athm.utils;
 
+import android.view.View;
+
 /**
  * Created by dllo on 16/8/23.
  * RecyclerView 行布局点击接口
@@ -13,6 +15,5 @@ public interface OnRvItemClick {
      *             如果适配器实体类是XXBean
      *             这里的String就换为XXBean
      */
-
-    void onRvItemClickListener(int position, String str);
+    void onRvItemClickListener(int position, String str, View view);
 }

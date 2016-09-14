@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 论坛-精贴-点击图片弹出窗口的listview适配器
  */
 public class ForumDialogAdapter extends BaseAdapter {
     private List<String> datas;

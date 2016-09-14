@@ -2,6 +2,7 @@ package com.lanou3g.dllo.athm.model.bean;
 
 /**
  * Created by dllo on 16/9/12.
+ * 论坛-全部-实体类
  */
 public class ForumSiftAllBean  {
     private  String title;//标题

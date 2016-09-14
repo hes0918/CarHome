@@ -7,6 +7,7 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 推荐-视频
  */
 public class VideoFragment extends AbsBaseFragment {
     public static VideoFragment newInstance(String str) {

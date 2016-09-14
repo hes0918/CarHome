@@ -9,6 +9,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/9/8.
+ * Activity的基类
  */
 public abstract class AbsBaseActivity extends AppCompatActivity {
 
@@ -22,28 +23,41 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         //初始化数据
         initDatas();
     }
-     //设置布局 返回值是R.layout.XX
+     /*
+     设置布局 返回值是R.layout.XX
+      */
     protected  abstract  int setLayout();
 
-    //初始化组件
+    /*
+    初始化组件
+     */
     protected  abstract void  initView();
 
-    //初始化数据
+    /*
+    初始化数据
+     */
     protected  abstract void  initDatas();
 
-    //简化findViewById
+    /*
+    简化findViewById
+     */
     protected  <T extends View>  T byView(int resId) {
         return (T) findViewById(resId);
     }
 
-    //跳转不传值
+    /*
+    跳转不传值
+     */
     protected  void  go(Context from,Class<? extends AppCompatActivity> to){
         startActivity(new Intent(from,to));
     }
 
-     // 跳转传值
-     // Bundle:轻量级存储类
-     // 存储一些Key-value(键值对)形式的数据
+     /*
+      跳转传值
+      Bundle:轻量级存储类
+      存储一些Key-value(键值对)形式的数据
+      */
+
 
     protected void  go(Context from,Class<? extends AppCompatActivity> to,Bundle extras){
         Intent intent = new Intent(from , to);

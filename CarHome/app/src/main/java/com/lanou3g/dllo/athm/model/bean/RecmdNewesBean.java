@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/12.
+ * 推荐-最新-实体类
  */
 public class RecmdNewesBean {
 

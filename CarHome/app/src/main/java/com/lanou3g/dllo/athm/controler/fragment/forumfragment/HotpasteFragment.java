@@ -5,6 +5,7 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 论坛-热帖
  */
 public class HotpasteFragment extends AbsBaseFragment{
     @Override

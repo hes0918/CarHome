@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.athm.controler.adapter.pager_adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 论坛 精选推荐 Recycler适配器
  */
 public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapter.MyViewHolder> {
     /**
@@ -26,6 +28,7 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
      */
     private Context context;
     private List<String> datas;
+    private int p;
 
     //定义点击接口对象
     private OnRvItemClick onRvItemClick;
@@ -72,17 +75,25 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
                 //判断自定义点击接口不为null执行
                 if (onRvItemClick != null) {
                     //获取当前行布局的position
-                    int p = holder.getLayoutPosition();
+                    p = holder.getLayoutPosition();
+                    notifyDataSetChanged();
+                    //获取选中的视图
+                    View view = holder.itemView;
                     //获取当前行布局的数据
                     String str = datas.get(position);
                     //将数据存储到接口对象中
-                    v.setSelected(true);
                     //回调接口方法-发出命令-执行setOnRvItemClick方法
-                    onRvItemClick.onRvItemClickListener(p, str);
+                    onRvItemClick.onRvItemClickListener(p, str,view);
                 }
             }
         });
-    }
+        if (position ==p){
+            holder.tv.setTextColor(Color.BLUE);
+        } else {
+            holder.tv.setTextColor(Color.GRAY);
+        }
+        }
+
 
 
     @Override

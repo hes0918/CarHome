@@ -14,12 +14,12 @@ import com.lanou3g.dllo.athm.model.bean.ForumSiftAllBean;
 import java.util.List;
 
 /**
- * Created by dllo on 16/9/12.
+ * Created by dllo on 16/9/12.Ò
+ * 论坛-精贴-listview适配器
  */
 public class ForumSiftAllAdapter extends BaseAdapter {
     private List<ForumSiftAllBean> datas;
     private Context context;
-
     public ForumSiftAllAdapter(Context context) {
         this.context = context;
     }

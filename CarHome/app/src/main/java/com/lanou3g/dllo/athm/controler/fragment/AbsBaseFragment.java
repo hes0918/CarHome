@@ -13,6 +13,7 @@ import com.lanou3g.dllo.athm.controler.activity.AbsBaseActivity;
 
 /**
  * Created by dllo on 16/9/8.
+ * Fragment的基类
  */
 public abstract class AbsBaseFragment extends Fragment {
     protected Context context;

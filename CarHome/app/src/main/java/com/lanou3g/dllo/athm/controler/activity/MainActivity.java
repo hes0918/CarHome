@@ -3,6 +3,8 @@ package com.lanou3g.dllo.athm.controler.activity;
 
 
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.athm.R;
@@ -12,6 +14,9 @@ import com.lanou3g.dllo.athm.controler.fragment.ForumFragment;
 import com.lanou3g.dllo.athm.controler.fragment.MeFragment;
 import com.lanou3g.dllo.athm.controler.fragment.RecommendFragment;
 
+/**
+ * 主页标题框架
+ */
 public class MainActivity extends AbsBaseActivity {
    //定义radioGroup
     private RadioGroup radioGroup;
@@ -46,8 +51,8 @@ public class MainActivity extends AbsBaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 //碎片管理者
- android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
- android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+                  FragmentManager manager = getSupportFragmentManager();
+                   FragmentTransaction transaction = manager.beginTransaction();
                 switch (checkedId){
                     case R.id.recommend_btn://推荐
                         transaction.replace(R.id.main_home_frgment_view,recommendFragment);

@@ -7,6 +7,7 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 论坛-优创页
  */
 public class ActorFragment extends AbsBaseFragment {
     public static ActorFragment newInstance(String str) {

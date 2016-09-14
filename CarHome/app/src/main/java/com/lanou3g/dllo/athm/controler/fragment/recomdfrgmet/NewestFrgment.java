@@ -2,6 +2,7 @@ package com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,6 +14,9 @@ import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.RecmdNewesAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.model.bean.RecmdNewesBean;
+import com.lanou3g.dllo.athm.model.net.VolleyInstance;
+import com.lanou3g.dllo.athm.model.net.VolleyResult;
+import com.lanou3g.dllo.athm.utils.UrlQuantity;
 
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
@@ -20,18 +24,11 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 推荐-最新页面
  */
 public class NewestFrgment extends AbsBaseFragment {
-    //网络接口
-    private String url ="http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
-    //定义请求列队
-    private RequestQueue queue;
     private RecmdNewesAdapter adapter;
-
     private ListView listView;
-
-
-
     //new一个单例
     public static NewestFrgment newInstance(String str) {
 
@@ -54,8 +51,6 @@ public class NewestFrgment extends AbsBaseFragment {
     protected void initView() {
         //初始化
         listView = byview(R.id.newest_list_view);
-
-
     }
 
     @Override
@@ -69,25 +64,24 @@ public class NewestFrgment extends AbsBaseFragment {
         //绑定适配器
         adapter = new RecmdNewesAdapter(context);
         listView.setAdapter(adapter);
-        //初始化请求队列
-        queue = Volley.newRequestQueue(context);
-        //请求数据
-        StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
+
+
+        //利用封装的网络工具类请求
+        VolleyInstance.getInstance().startRequest(UrlQuantity.newestUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
-               //解析
+            public void success(String resultStr) {
+                //解析
                 Gson gson = new Gson();
-                RecmdNewesBean bean = gson.fromJson(response,RecmdNewesBean.class);
+                RecmdNewesBean bean = gson.fromJson(resultStr,RecmdNewesBean.class);
                 List<RecmdNewesBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
                 adapter.setDatas(datas);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-       queue.add(sr);
 
 
     }

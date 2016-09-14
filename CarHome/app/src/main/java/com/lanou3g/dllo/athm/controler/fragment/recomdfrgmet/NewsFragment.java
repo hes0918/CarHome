@@ -8,6 +8,7 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 推荐-新闻
  */
 public class NewsFragment extends AbsBaseFragment {
 
