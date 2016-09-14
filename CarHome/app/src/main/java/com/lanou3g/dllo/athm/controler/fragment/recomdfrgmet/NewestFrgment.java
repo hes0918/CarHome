@@ -3,11 +3,18 @@ package com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.RecmdNewesAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.model.bean.RecmdNewesBean;
 
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +22,14 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  */
 public class NewestFrgment extends AbsBaseFragment {
+    //网络接口
+    private String url ="http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
+    //定义请求列队
+    private RequestQueue queue;
+    private RecmdNewesAdapter adapter;
 
     private ListView listView;
-    private List<RecmdNewesBean> datas;
+
 
 
     //new一个单例
@@ -43,6 +55,7 @@ public class NewestFrgment extends AbsBaseFragment {
         //初始化
         listView = byview(R.id.newest_list_view);
 
+
     }
 
     @Override
@@ -53,21 +66,31 @@ public class NewestFrgment extends AbsBaseFragment {
         //取值
         Bundle bunble = getArguments();
         String string = bunble.getString("text");
-
-        //构造列表假数据
-        bulidDatas();
-        //创建适配器
-        RecmdNewesAdapter adapter = new RecmdNewesAdapter(context);
-        adapter.setDatas(datas);
+        //绑定适配器
+        adapter = new RecmdNewesAdapter(context);
         listView.setAdapter(adapter);
+        //初始化请求队列
+        queue = Volley.newRequestQueue(context);
+        //请求数据
+        StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+               //解析
+                Gson gson = new Gson();
+                RecmdNewesBean bean = gson.fromJson(response,RecmdNewesBean.class);
+                List<RecmdNewesBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                adapter.setDatas(datas);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+       queue.add(sr);
+
 
     }
 
-    private void bulidDatas() {
-        datas = new ArrayList<>();
-        for (int i = 0; i <30 ; i++) {
-            datas.add(new RecmdNewesBean("标题","时间","计数"+i,R.mipmap.ic_launcher));
 
-        }
-    }
 }

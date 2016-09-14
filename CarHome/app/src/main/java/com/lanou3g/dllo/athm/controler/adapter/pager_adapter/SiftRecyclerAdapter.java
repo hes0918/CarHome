@@ -50,7 +50,8 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //布局初始化  从context获得一个布局加载器 加载布局 因为加载布局的方法是Activity才可以 所以利用context
-        View view = LayoutInflater.from(context).inflate(R.layout.item_sift_recycler, parent, false);
+        final View view = LayoutInflater.from(context).inflate(R.layout.item_sift_recycler, parent, false);
+
         //把布局里面的数据赋值缓存类里面
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
@@ -75,6 +76,7 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
                     //获取当前行布局的数据
                     String str = datas.get(position);
                     //将数据存储到接口对象中
+                    v.setSelected(true);
                     //回调接口方法-发出命令-执行setOnRvItemClick方法
                     onRvItemClick.onRvItemClickListener(p, str);
                 }
@@ -83,6 +85,11 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
     }
 
 
+    @Override
+    public void onViewRecycled(MyViewHolder holder) {
+        super.onViewRecycled(holder);
+        holder.itemView.setSelected(false);
+    }
 
     @Override
     public int getItemCount() {

@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.athm.controler.adapter.listview_adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.model.bean.RecmdNewesBean;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -17,14 +20,14 @@ import java.util.List;
  * Created by dllo on 16/9/12.
  */
 public class RecmdNewesAdapter extends BaseAdapter{
-    private List<RecmdNewesBean>  datas;
+    private List<RecmdNewesBean.ResultBean.NewslistBean> datas;
     private Context context;
 
     public RecmdNewesAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<RecmdNewesBean> datas) {
+    public void setDatas(List<RecmdNewesBean.ResultBean.NewslistBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -64,11 +67,17 @@ public class RecmdNewesAdapter extends BaseAdapter{
         }
         //设置组件的内容 (TextView设置文字符)
         //首先获取当前行的实体类,对应的位置去集合里获取
-        RecmdNewesBean myBean = (RecmdNewesBean) getItem(position);
-        viewHolder.titleTv.setText(myBean.getTitle());
-        viewHolder.timeTv.setText(myBean.getTime());
-        viewHolder.countTv.setText(myBean.getCount());
-        viewHolder.iv.setImageResource(myBean.getImg());
+        RecmdNewesBean.ResultBean.NewslistBean bean = datas.get(position);
+        if (bean !=null){
+            viewHolder.titleTv.setText(bean.getTitle());
+            viewHolder.timeTv.setText(bean.getTime());
+         //   Picasso.with(context).load(bean.getSmallpic()).into(viewHolder.iv);
+            //2.Glide
+            //能加载uri path file等格式的图片
+            //谷歌推荐的图片加载
+            //更流畅的加载gif
+            Glide.with(context).load(bean.getSmallpic()).into(viewHolder.iv);
+        }
 
         return convertView;
     }

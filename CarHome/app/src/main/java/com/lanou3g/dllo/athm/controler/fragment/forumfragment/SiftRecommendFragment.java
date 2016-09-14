@@ -76,7 +76,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         //将布局管理者设置给RecyclerView
         recyclerView.setLayoutManager(llManager);
         //为RecyclerView设置数据
-        List<String> data = new ArrayList<>();
+        final List<String> data = new ArrayList<>();
         data.add("全部");
         data.add("媳妇当车模");
         data.add("美人\"记\"");
@@ -126,6 +126,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
             @Override
             public void onRvItemClickListener(int position, String str) {
                 Toast.makeText(context, "position:" + position, Toast.LENGTH_SHORT).show();
+
                 //碎片管理者
                 FragmentManager manager = getChildFragmentManager();
                 final FragmentTransaction transaction = manager.beginTransaction();
