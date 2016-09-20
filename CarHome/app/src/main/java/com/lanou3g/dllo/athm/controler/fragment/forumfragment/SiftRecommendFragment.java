@@ -3,7 +3,6 @@ package com.lanou3g.dllo.athm.controler.fragment.forumfragment;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -48,7 +47,11 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     private SiftAllFragment siftAllFragment;
     //定义适配器
     private SiftRecyclerAdapter adapter;
-
+    //碎片管理者
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+    //加载出对话框显示的View
+    private View view;
     @Override
     protected int setLayout() {
         return R.layout.forum_sift_fragment;
@@ -66,7 +69,6 @@ public class SiftRecommendFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
-
         adapter = new SiftRecyclerAdapter(context);
         recyclerView.setAdapter(adapter);
         //RecyclerView 对比ListView多的是
@@ -87,10 +89,10 @@ public class SiftRecommendFragment extends AbsBaseFragment {
                 Toast.makeText(context, "position:" + position, Toast.LENGTH_SHORT).show();
                 view.setSelected(true);
                 //碎片管理者
-                FragmentManager manager = getChildFragmentManager();
-                final FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.forum_sift_frame, siftAllFragment);
-                transaction.commit();
+                 manager = getChildFragmentManager();
+                 transaction = manager.beginTransaction();
+                 transaction.replace(R.id.forum_sift_frame, siftAllFragment);
+                 transaction.commit();
 
             }
 
@@ -100,47 +102,53 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //popup  弹出 弹出窗口
-                pw = new PopupWindow(context);
-                //设置固定值的宽
-                pw.setWidth(600);
-                //使用Match或者Wrap来限制
-                // pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-                //高设置的方式和宽一样 也是这两种
-                pw.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-                //加载出对话框显示的View
-                final View view = LayoutInflater.from(context).inflate(R.layout.forum_dialog_login, null);
-                listView = (ListView) view.findViewById(R.id.dialog_list_view);
-                //构造listview假数据
-                //创建适配器
-                bulidDatas();
-                ForumDialogAdapter adapter = new ForumDialogAdapter(context);
-                adapter.setDatas(datas);
-                listView.setAdapter(adapter);
-                //点击关闭退出窗口
-                TextView dialogTv = (TextView) view.findViewById(R.id.dialog_close_tv);
-                dialogTv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //关闭PopWindow
-                        pw.dismiss();
-                    }
-                });
-                //设置弹出窗口的内容
-                pw.setContentView(view);
-                //设置弹出窗口焦点
-                pw.setFocusable(true);
-                //外界点击能力
-                pw.setOutsideTouchable(true);
-                //显示在固定的X,Y位置
-                //参数1:父容器 弹出窗口 显示依附的父容器
-                //参数2:Gravity 重心
-                //参数3 4:X,Y的位置
-                pw.showAtLocation(rootView, Gravity.RIGHT,0,0);
+                popupPW();
+
             }
 
         });
     }
+    //弹出窗口
+    private void popupPW() {
+        //popup  弹出 弹出窗口
+        pw = new PopupWindow(context);
+        //设置固定值的宽
+        pw.setWidth(600);
+        //使用Match或者Wrap来限制
+        // pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        //高设置的方式和宽一样 也是这两种
+        pw.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        //加载出对话框显示的View
+        view = LayoutInflater.from(context).inflate(R.layout.forum_dialog_login, null);
+        listView = (ListView) view.findViewById(R.id.dialog_list_view);
+        //构造listview假数据
+        //创建适配器
+        bulidDatas();
+        ForumDialogAdapter adapter = new ForumDialogAdapter(context);
+        adapter.setDatas(datas);
+        listView.setAdapter(adapter);
+        //点击关闭退出窗口
+        TextView dialogTv = (TextView) view.findViewById(R.id.dialog_close_tv);
+        dialogTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //关闭PopWindow
+                pw.dismiss();
+            }
+        });
+        //设置弹出窗口的内容
+        pw.setContentView(view);
+        //设置弹出窗口焦点
+        pw.setFocusable(true);
+        //外界点击能力
+        pw.setOutsideTouchable(true);
+        //显示在固定的X,Y位置
+        //参数1:父容器 弹出窗口 显示依附的父容器
+        //参数2:Gravity 重心
+        //参数3 4:X,Y的位置
+        pw.showAtLocation(rootView, Gravity.RIGHT,0,0);
+    }
+
     //为RecyclerView设置数据
     private void addRecyclerView() {
         data = new ArrayList<>();

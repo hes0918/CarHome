@@ -10,22 +10,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.model.bean.RecmdNewesBean;
+import com.lanou3g.dllo.athm.model.bean.RecmdActorBean;
+
 import java.util.List;
 
 /**
- * Created by dllo on 16/9/12.
- * 推荐-最新首页适配器
+ * Created by dllo on 16/9/18.
  */
-public class RecmdNewesAdapter extends BaseAdapter {
-    private List<RecmdNewesBean.ResultBean.NewslistBean> datas;
+public class RecmdActorAdapter extends BaseAdapter{
+    private List<RecmdActorBean.ResultBean.NewslistBean> datas;
     private Context context;
 
-    public RecmdNewesAdapter(Context context) {
+    public RecmdActorAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<RecmdNewesBean.ResultBean.NewslistBean> datas) {
+    public void setDatas(List<RecmdActorBean.ResultBean.NewslistBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -35,10 +35,13 @@ public class RecmdNewesAdapter extends BaseAdapter {
         return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
 
+
+
     @Override
     public Object getItem(int position) {
         return datas != null && datas.size() > 0 ? datas.get(position) : null;
     }
+
 
     @Override
     public long getItemId(int position) {
@@ -52,7 +55,7 @@ public class RecmdNewesAdapter extends BaseAdapter {
         //第一次生成行布局;判断如果是null就加载
         if (convertView == null) {
             convertView = LayoutInflater.from(context)
-                    .inflate(R.layout.item_recmd_newes, parent, false);
+                    .inflate(R.layout.item_recmd_actor, parent, false);
             //把加载出来的View传入缓存类去findViewById
             viewHolder = new ViewHolder(convertView);
             //Object的方法, setTag 保存某个属性
@@ -65,35 +68,27 @@ public class RecmdNewesAdapter extends BaseAdapter {
         }
         //设置组件的内容 (TextView设置文字符)
         //首先获取当前行的实体类,对应的位置去集合里获取
-        RecmdNewesBean.ResultBean.NewslistBean bean = datas.get(position);
-        if (bean != null) {
-            viewHolder.titleTv.setText(bean.getTitle());
-            viewHolder.timeTv.setText(bean.getTime());
-            //   Picasso.with(context).load(bean.getSmallpic()).into(viewHolder.iv);
-            //2.Glide
-            //能加载uri path file等格式的图片
-            //谷歌推荐的图片加载
-            //更流畅的加载gif
-            Glide.with(context).load(bean.getSmallpic()).into(viewHolder.iv);
+        RecmdActorBean.ResultBean.NewslistBean bean = datas.get(position);
+        if (bean != null){
+            viewHolder.titleTv.setText(bean.getUsername());
+            viewHolder.timeTv.setText(bean.getPublishtime());
+            viewHolder.contentTv.setText(bean.getTitle());
+            //Glide 加载图片
+            Glide.with(context).load(bean.getUserpic()).into(viewHolder.headIv);
+            Glide.with(context).load(bean.getIndexdetail().get(0)).into(viewHolder.contentIv);
         }
-
         return convertView;
     }
-
-
-
-    class ViewHolder {
-        TextView titleTv;
-        TextView timeTv;
-        TextView countTv;
-        ImageView iv;
-
-        public ViewHolder(View v) {
-            titleTv = (TextView) v.findViewById(R.id.item_newest_title_tv);
-            timeTv = (TextView) v.findViewById(R.id.item_newest_time_tv);
-            countTv = (TextView) v.findViewById(R.id.item_newest_count_tv);
-            iv = (ImageView) v.findViewById(R.id.item_newest_list_iv);
+    class ViewHolder{
+        ImageView headIv,contentIv;
+        TextView titleTv,contentTv,timeTv,goodTv;
+        public  ViewHolder(View v){
+            headIv = (ImageView) v.findViewById(R.id.item_ac_head_iv);
+            contentIv= (ImageView) v.findViewById(R.id.item_ac_content_iv);
+            titleTv= (TextView) v.findViewById(R.id.item_ac_title_tv);
+            contentTv= (TextView) v.findViewById(R.id.item_ac_content_tv);
+            timeTv= (TextView) v.findViewById(R.id.item_ac_time_tv);
+            goodTv= (TextView) v.findViewById(R.id.item_ac_good_tv);
         }
     }
-
 }

@@ -3,10 +3,14 @@ package com.lanou3g.dllo.athm.controler.fragment.forumfragment;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.ForumSiftAllAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.model.bean.ForumSiftAllBean;
+import com.lanou3g.dllo.athm.model.net.VolleyInstance;
+import com.lanou3g.dllo.athm.model.net.VolleyResult;
+import com.lanou3g.dllo.athm.utils.UrlQuantity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +22,15 @@ import java.util.List;
 public class SiftAllFragment extends AbsBaseFragment {
     //定义Listview 实体类
     private ListView listView;
-    private List<ForumSiftAllBean> datas;
+    private ForumSiftAllAdapter adapter;
+
     //单例
     public static SiftAllFragment newInstance(String str) {
 
         Bundle args = new Bundle();
         //将String存储到Bundle中
         //Bundle是一个轻量级的存储类
-        args.putString("text",str);
+        args.putString("text", str);
 
         SiftAllFragment fragment = new SiftAllFragment();
         fragment.setArguments(args);
@@ -40,10 +45,7 @@ public class SiftAllFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         //初始化Listview
-     listView = byview(R.id.sift_all_list_view);
-
-
-
+        listView = byview(R.id.sift_all_list_view);
     }
 
     @Override
@@ -55,22 +57,27 @@ public class SiftAllFragment extends AbsBaseFragment {
         Bundle bunble = getArguments();
         String string = bunble.getString("text");
 
-
-        //构造列表假数据测试
-        bulidDatas();
         //创建适配器
-        ForumSiftAllAdapter adapter = new ForumSiftAllAdapter(context);
-        //设置数据
-        adapter.setDatas(datas);
+        adapter = new ForumSiftAllAdapter(context);
         //绑定适配器
         listView.setAdapter(adapter);
+        //利用封装的网络工具类请求
+        VolleyInstance.getInstance().startRequest(UrlQuantity.SIFTALLURL, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                //解析
+                Gson gson = new Gson();
+                ForumSiftAllBean bean = gson.fromJson(resultStr, ForumSiftAllBean.class);
+                List<ForumSiftAllBean.ResultBean.ListBean> datas = bean.getResult().getList();
+                adapter.setDatas(datas);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
     }
 
-    private void bulidDatas() {
-        datas = new ArrayList<>();
-        for (int i = 0; i <40 ; i++) {
-            datas.add(new ForumSiftAllBean("标题","内容","计数",R.mipmap.ic_launcher));
 
-        }
-    }
 }

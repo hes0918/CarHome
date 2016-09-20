@@ -9,8 +9,8 @@
     <FrameLayout
         android:id="@+id/main_home_frgment_view"
         android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <View
         android:layout_width="match_parent"
@@ -30,8 +30,7 @@
 
             android:button="@null"
             android:drawableTop="@drawable/remm"
-            android:gravity="center"
-            />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/forum_btn"
@@ -39,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:gravity="center"
-            android:drawableTop="@drawable/four"/>
+            android:drawableTop="@drawable/four"
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/findcar_btn"
@@ -58,8 +57,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/fin"
-            android:gravity="center"
-            />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/me_btn"
@@ -67,8 +65,7 @@
             android:layout_height="wrap_content"
             android:button="@null"
             android:drawableTop="@drawable/me"
-            android:gravity="center"
-             />
+            android:gravity="center" />
     </RadioGroup>
 
 

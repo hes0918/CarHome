@@ -10,6 +10,10 @@ import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
  * 推荐-快报
  */
 public class BulletinFragment extends AbsBaseFragment {
+
+    
+
+
     public static BulletinFragment newInstance(String str) {
 
         Bundle args = new Bundle();
@@ -38,5 +42,6 @@ public class BulletinFragment extends AbsBaseFragment {
         //取值
         Bundle bunble = getArguments();
         String string = bunble.getString("text");
+
     }
 }
