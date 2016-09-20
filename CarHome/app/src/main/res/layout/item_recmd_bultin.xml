@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/item_bulletin_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:text="标题哈哈哈哈"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+    <ImageView
+        android:id="@+id/item_bulletin_content_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@android:mipmap/sym_def_app_icon"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/item_bulletin_watch_tv"
+            android:text="人浏览"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/item_bulletin_time_tv"
+            android:text="时间"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</LinearLayout>

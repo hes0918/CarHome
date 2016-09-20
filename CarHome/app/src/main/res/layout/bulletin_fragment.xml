@@ -2,9 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:text="按钮"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/bulletin_brand_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部品牌 >"/>
+        <TextView
+            android:id="@+id/bulletin_grade_tv"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部等级 >"/>
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/bulletin_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
