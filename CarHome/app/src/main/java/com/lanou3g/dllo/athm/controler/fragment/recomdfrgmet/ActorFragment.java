@@ -46,8 +46,6 @@ public class ActorFragment extends AbsBaseFragment implements View.OnClickListen
     private ActorRotateVpAdapter vpAdapter;
     //轮播图的实体类
     private List<ActorRotateBean> rotateDatas;
-
-
     //定义标题栏的图片 点击弹出dialog
     private ImageView imageView;
     private TextView pwtitle;

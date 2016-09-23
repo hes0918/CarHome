@@ -65,6 +65,7 @@ public class ForumDialogAdapter extends BaseAdapter {
 
         }
         viewHolder.titleTv.setText("全部");
+        viewHolder.titleTv.setText("媳妇当车模");
 
         return convertView;
     }

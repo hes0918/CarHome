@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.ForumDialogAdapter;
-import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.SiftRecyclerAdapter;
+import com.lanou3g.dllo.athm.controler.adapter.rc_adapter.SiftRecyclerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.utils.OnRvItemClick;
 
@@ -97,6 +97,10 @@ public class SiftRecommendFragment extends AbsBaseFragment {
             }
 
         });
+        manager = getChildFragmentManager();
+        transaction = manager.beginTransaction();
+        transaction.replace(R.id.forum_sift_frame, siftAllFragment);
+        transaction.commit();
 
         //点击图片弹出dialog
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -198,8 +202,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
    //dialog listView假数据
     private void bulidDatas() {
         datas = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            datas.add("全部" + i);
-        }
+        datas.add("全部");
+        datas.add("美人计");
     }
 }

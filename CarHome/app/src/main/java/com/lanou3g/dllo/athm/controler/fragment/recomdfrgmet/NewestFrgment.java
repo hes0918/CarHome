@@ -76,7 +76,6 @@ public class NewestFrgment extends AbsBaseFragment {
         listView.setAdapter(adapter);
         //利用封装的网络工具类请求Listview最新的数据
         listviewNewestVolley();
-
         //请求轮播图的数据
         buildDatas();
         //绑定vp适配器

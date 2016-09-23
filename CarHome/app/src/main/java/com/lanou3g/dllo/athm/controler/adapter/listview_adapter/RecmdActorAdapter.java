@@ -14,6 +14,8 @@ import com.lanou3g.dllo.athm.model.bean.RecmdActorBean;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by dllo on 16/9/18.
  */
@@ -80,10 +82,11 @@ public class RecmdActorAdapter extends BaseAdapter{
         return convertView;
     }
     class ViewHolder{
-        ImageView headIv,contentIv;
+        ImageView contentIv;
+        CircleImageView headIv;
         TextView titleTv,contentTv,timeTv,goodTv;
         public  ViewHolder(View v){
-            headIv = (ImageView) v.findViewById(R.id.item_ac_head_iv);
+            headIv = (CircleImageView) v.findViewById(R.id.item_ac_head_iv);
             contentIv= (ImageView) v.findViewById(R.id.item_ac_content_iv);
             titleTv= (TextView) v.findViewById(R.id.item_ac_title_tv);
             contentTv= (TextView) v.findViewById(R.id.item_ac_content_tv);

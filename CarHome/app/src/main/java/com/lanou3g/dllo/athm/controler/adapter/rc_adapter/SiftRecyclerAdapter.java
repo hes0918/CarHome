@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.athm.controler.adapter.pager_adapter;
+package com.lanou3g.dllo.athm.controler.adapter.rc_adapter;
 
 import android.content.Context;
 import android.graphics.Color;
