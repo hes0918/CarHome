@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.ForumDialogAdapt
 import com.lanou3g.dllo.athm.controler.adapter.rc_adapter.SiftRecyclerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.utils.OnRvItemClick;
+import com.lanou3g.dllo.athm.utils.UrlQuantity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     //定义RecyclerView组合
     private List<String> data;
     //定义ListView
+    private ForumDialogAdapter dialogAdapter;
     private ListView listView;
     private List<String> datas;
     //Activity 不居中最外层的布局
@@ -44,7 +47,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     //定义RecyclerView
     private RecyclerView recyclerView;
     //定义占位布局的Fragment
-    private SiftAllFragment siftAllFragment;
+//    private SiftAllFragment siftAllFragment;
     //定义适配器
     private SiftRecyclerAdapter adapter;
     //碎片管理者
@@ -52,6 +55,16 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     private FragmentTransaction transaction;
     //加载出对话框显示的View
     private View view;
+    private String list[] ={UrlQuantity.SIFTALLURL,UrlQuantity.XIFU,UrlQuantity.MEIREN,UrlQuantity.MINGREN,
+            UrlQuantity.JIANGSHI,UrlQuantity.JINGTIAO,UrlQuantity.XIANSHEN,UrlQuantity.GAODUAN,
+            UrlQuantity.DIANDONG,UrlQuantity.HUIMAICHE,UrlQuantity.HANGCHE,UrlQuantity.CHAOJI,
+            UrlQuantity.HAIWAI,UrlQuantity.JINGDIAN,UrlQuantity.MEIZI,UrlQuantity.YOUHUI,
+            UrlQuantity.YUANCHUANG,UrlQuantity.DINGPEI,UrlQuantity.GAIZHUANG,UrlQuantity.YANGCHE,
+            UrlQuantity.SHOUFA,UrlQuantity.XINCHE,UrlQuantity.LISHI,UrlQuantity.MOYOU,
+            UrlQuantity.MIYUE,UrlQuantity.TIANMI,UrlQuantity.SHEYING,UrlQuantity.CHEYOU,
+            UrlQuantity.DANCHE,UrlQuantity.ZATAN,UrlQuantity.HUABEI,UrlQuantity.XINAN,
+            UrlQuantity.DONGBEI,UrlQuantity.XIBEI,UrlQuantity.HUAZHONG,UrlQuantity.HUANAN,
+            UrlQuantity.HUADONG,UrlQuantity.GANGAO,UrlQuantity.HAIWAIYOUJI,UrlQuantity.CANGHAI};
     @Override
     protected int setLayout() {
         return R.layout.forum_sift_fragment;
@@ -60,7 +73,8 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         recyclerView = byview(R.id.sift_title_recycler);
-        siftAllFragment=SiftAllFragment.newInstance("");
+
+
         //初始化图片
         imageView = byview(R.id.forum_sift_image);
         //依附的父容器
@@ -91,7 +105,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
                 //碎片管理者
                  manager = getChildFragmentManager();
                  transaction = manager.beginTransaction();
-                 transaction.replace(R.id.forum_sift_frame, siftAllFragment);
+                 transaction.replace(R.id.forum_sift_frame, SiftAllFragment.newInstance(list[position]));
                  transaction.commit();
 
             }
@@ -99,7 +113,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         });
         manager = getChildFragmentManager();
         transaction = manager.beginTransaction();
-        transaction.replace(R.id.forum_sift_frame, siftAllFragment);
+        transaction.replace(R.id.forum_sift_frame, SiftAllFragment.newInstance(UrlQuantity.SIFTALLURL));
         transaction.commit();
 
         //点击图片弹出dialog
@@ -125,12 +139,13 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         //加载出对话框显示的View
         view = LayoutInflater.from(context).inflate(R.layout.forum_dialog_login, null);
         listView = (ListView) view.findViewById(R.id.dialog_list_view);
-        //构造listview假数据
+
         //创建适配器
+        dialogAdapter = new ForumDialogAdapter(context);
+        //构造listview假数据
         bulidDatas();
-        ForumDialogAdapter adapter = new ForumDialogAdapter(context);
-        adapter.setDatas(datas);
-        listView.setAdapter(adapter);
+        dialogAdapter.setDatas(datas);
+        listView.setAdapter(dialogAdapter);
         //点击关闭退出窗口
         TextView dialogTv = (TextView) view.findViewById(R.id.dialog_close_tv);
         dialogTv.setOnClickListener(new View.OnClickListener() {
@@ -203,6 +218,45 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     private void bulidDatas() {
         datas = new ArrayList<>();
         datas.add("全部");
-        datas.add("美人计");
+        datas.add("媳妇当车模");
+        datas.add("美人\"记\"");
+        datas.add("论坛红人馆");
+        datas.add("论坛讲师");
+        datas.add("精挑细选");
+        datas.add("现身说法");
+        datas.add("高端阵地");
+        datas.add("电动车");
+        datas.add("汇买车");
+        datas.add("行车点评");
+        datas.add("超级试驾员");
+        datas.add("海外购车");
+        datas.add("经典老车");
+        datas.add("妹子选车");
+        datas.add("优惠购车");
+        datas.add("原创大片");
+        datas.add("顶配风采");
+        datas.add("改装有理");
+        datas.add("养车有道");
+        datas.add("首发阵营");
+        datas.add("新车直播");
+        datas.add("历史选题");
+        datas.add("摩友天地");
+        datas.add("蜜月之旅");
+        datas.add("甜蜜有礼");
+        datas.add("摄影课堂");
+        datas.add("车友聚会");
+        datas.add("单车部落");
+        datas.add("杂谈俱乐部");
+        datas.add("华北游记");
+        datas.add("西南游记");
+        datas.add("东北游记");
+        datas.add("西北游记");
+        datas.add("华中游记");
+        datas.add("华南游记");
+        datas.add("华东游记");
+        datas.add("港澳台游记");
+        datas.add("海外游记");
+        datas.add("沧海遗珠");
+        dialogAdapter.setDatas(datas);
     }
 }

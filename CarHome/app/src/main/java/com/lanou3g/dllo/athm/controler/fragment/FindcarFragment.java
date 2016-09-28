@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.FindcarPagerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.findcarfragment.BrandFragment;
+import com.lanou3g.dllo.athm.controler.fragment.findcarfragment.ScreenFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class FindcarFragment extends AbsBaseFragment {
     protected void initDatas() {
         fragments = new ArrayList<>();
         fragments.add(new BrandFragment());
-        fragments.add(new BrandFragment());
+        fragments.add(new ScreenFragment());
         fragments.add(new BrandFragment());
         fragments.add(new BrandFragment());
         adapter = new FindcarPagerAdapter(getChildFragmentManager());

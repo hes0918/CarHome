@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/item_find_logo"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp" />
+
+        <TextView
+            android:id="@+id/item_find_title"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/item_find_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题"
+            />
+        <TextView
+            android:id="@+id/item_find_short_title"
+            android:layout_alignLeft="@id/item_find_title"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/item_find_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="短标题"/>
+        <TextView
+            android:id="@+id/item_find_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_find_short_title"
+            android:text="价位"
+            android:textColor="#f03"
+            android:layout_marginTop="5dp"
+            android:layout_alignLeft="@id/item_find_short_title"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

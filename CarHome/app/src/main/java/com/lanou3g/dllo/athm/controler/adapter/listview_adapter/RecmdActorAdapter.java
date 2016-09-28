@@ -75,6 +75,7 @@ public class RecmdActorAdapter extends BaseAdapter{
             viewHolder.titleTv.setText(bean.getUsername());
             viewHolder.timeTv.setText(bean.getPublishtime());
             viewHolder.contentTv.setText(bean.getTitle());
+            viewHolder.goodTv.setText(bean.getPraisenum()+""+"人点赞");
             //Glide 加载图片
             Glide.with(context).load(bean.getUserpic()).into(viewHolder.headIv);
             Glide.with(context).load(bean.getIndexdetail().get(0)).into(viewHolder.contentIv);

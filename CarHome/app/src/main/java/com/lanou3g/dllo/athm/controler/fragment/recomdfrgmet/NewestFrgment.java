@@ -1,14 +1,18 @@
 package com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
+import com.lanou3g.dllo.athm.controler.activity.RecmNewesAty;
 import com.lanou3g.dllo.athm.views.HomeListView;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.RecmdNewesAdapter;
 import com.lanou3g.dllo.athm.controler.adapter.rotate_vp_adapter.NewestRotateVpAdapter;
@@ -96,6 +100,20 @@ public class NewestFrgment extends AbsBaseFragment {
         //为listview添加头布局
         View headView = LayoutInflater.from(context).inflate(R.layout.newest_coming,null);
         listView.addHeaderView(headView);
+        //为ListView设置行布局点击事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                RecmdNewesBean.ResultBean.NewslistBean
+                        bean  = (RecmdNewesBean.ResultBean.NewslistBean) parent.getItemAtPosition(position);
+                String a = bean.getId() +"";
+                Log.d("NewestFrgment", "a:" + a);
+                Intent intent = new Intent(context, RecmNewesAty.class);
+                intent.putExtra("id",a);
+                startActivity(intent);
+            }
+        });
     }
 
 

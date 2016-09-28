@@ -8,6 +8,7 @@ import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.BulletinFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewestFrgment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewsFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.VideoFragment;
+import com.lanou3g.dllo.athm.utils.UrlQuantity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,17 +46,17 @@ public class RecommendFragment extends AbsBaseFragment {
        fragments.add(ActorFragment.newInstance("优创"));
        fragments.add(BulletinFragment.newInstance("快报"));
        fragments.add(VideoFragment.newInstance("视频"));
-       fragments.add(NewsFragment.newInstance("新闻"));
-       fragments.add(NewsFragment.newInstance("评测"));
-       fragments.add(NewsFragment.newInstance("导购"));
-       fragments.add(NewsFragment.newInstance("行情"));
-       fragments.add(NewsFragment.newInstance("用车"));
-       fragments.add(NewsFragment.newInstance("技术"));
-       fragments.add(NewsFragment.newInstance("文化"));
-       fragments.add(NewsFragment.newInstance("改装"));
-       fragments.add(NewsFragment.newInstance("游记"));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.NEWS));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.PINGCE));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.DAOGOU));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.HANGQING));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.YONGCHE));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.JISHU));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.WENHUA));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.GAIZHUANG));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.YOUJI));
        fragments.add(NewsFragment.newInstance("原创视频"));
-       fragments.add(NewsFragment.newInstance("说客"));
+       fragments.add(NewsFragment.newInstance(UrlQuantity.SHUOKE));
 
        adapter = new RecmdPagerAdapter(getChildFragmentManager());
        adapter.setFragments(fragments);

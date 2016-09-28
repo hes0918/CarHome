@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/12.Ò
- * 论坛-精贴-listview适配器
+ * 论坛-精贴-listView适配器
  */
 public class ForumSiftAllAdapter extends BaseAdapter {
     private List<ForumSiftAllBean.ResultBean.ListBean> datas;
@@ -96,7 +96,7 @@ public class ForumSiftAllAdapter extends BaseAdapter {
         if (bean != null) {
             viewHolder.coutentTv.setText(bean.getBbsname());
             viewHolder.titleTv.setText(bean.getTitle());
-//        viewHolder.countTv.setText(bean.getReplycounts());
+        viewHolder.countTv.setText(bean.getReplycounts()+""+"人浏览");
             //Glide
             //能加载uri path file等格式的图片
             //谷歌推荐的图片加载

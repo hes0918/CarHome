@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 找车 品牌页面
  */
 public class BrandFragment extends AbsBaseFragment {
     private FindCarBrandListView listView;
@@ -39,6 +40,7 @@ public class BrandFragment extends AbsBaseFragment {
     //头布局的rcView
     private RecyclerView recyclerView;
     private View headView;
+    private View oneHeadView;
 
 
     public static BrandFragment newInstance(String str) {
@@ -84,8 +86,13 @@ public class BrandFragment extends AbsBaseFragment {
 
         //利用封装的网络工具类请求Listview最新的数据
         listviewNewestVolley();
-
-        //为listview添加头布局
+         //为listview添加菜单头布局
+        oneHeadView = LayoutInflater.from(context).inflate(R.layout.brand_head_rc1,null);
+        /************************/
+        //这里记得初始化组件和写菜单的点击事件
+        /************************/
+        listView.addHeaderView(oneHeadView);
+        //为listview添加RC头布局
         headView = LayoutInflater.from(context).inflate(R.layout.findcar_brand_head, null);
         recyclerView = (RecyclerView) headView.findViewById(R.id.brand_head_rc);
         //初始化RC适配器 绑定适配器

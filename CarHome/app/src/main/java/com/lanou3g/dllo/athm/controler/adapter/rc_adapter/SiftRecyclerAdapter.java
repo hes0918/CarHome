@@ -88,7 +88,7 @@ public class SiftRecyclerAdapter extends RecyclerView.Adapter<SiftRecyclerAdapte
             }
         });
         if (position ==p){
-            holder.tv.setTextColor(Color.BLUE);
+            holder.tv.setTextColor(Color.parseColor("#1b7dd4"));
         } else {
             holder.tv.setTextColor(Color.GRAY);
         }

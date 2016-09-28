@@ -31,7 +31,6 @@ public class SiftAllFragment extends AbsBaseFragment {
         //将String存储到Bundle中
         //Bundle是一个轻量级的存储类
         args.putString("text", str);
-
         SiftAllFragment fragment = new SiftAllFragment();
         fragment.setArguments(args);
         return fragment;
@@ -62,7 +61,7 @@ public class SiftAllFragment extends AbsBaseFragment {
         //绑定适配器
         listView.setAdapter(adapter);
         //利用封装的网络工具类请求
-        VolleyInstance.getInstance().startRequest(UrlQuantity.SIFTALLURL, new VolleyResult() {
+        VolleyInstance.getInstance().startRequest(string, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 //解析

@@ -62,10 +62,8 @@ public class ForumDialogAdapter extends BaseAdapter {
         }else {
             //不是第一次生成行布局,开始复用
             viewHolder = (ViewHolder)convertView.getTag();
-
         }
-        viewHolder.titleTv.setText("全部");
-        viewHolder.titleTv.setText("媳妇当车模");
+        viewHolder.titleTv.setText(datas.get(position));
 
         return convertView;
     }

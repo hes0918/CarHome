@@ -69,7 +69,7 @@ public class FindCarBrandAdapter extends BaseAdapter {
 //        if (bean != null) {
         ((TextView) convertView.findViewById(R.id.item_brand_tv)).setText(bean.getName());
 //        Glide.with(context).load(bean.getImgurl()).into((ImageView) convertView.findViewById(R.id.item_brand_iv));
-        Picasso.with(context).load(bean.getImgurl()).resize(50,50).into((ImageView) convertView.findViewById(R.id.item_brand_iv));
+        Picasso.with(context).load(bean.getImgurl()).resize(70,70).into((ImageView) convertView.findViewById(R.id.item_brand_iv));
 //        }
         return convertView;
     }

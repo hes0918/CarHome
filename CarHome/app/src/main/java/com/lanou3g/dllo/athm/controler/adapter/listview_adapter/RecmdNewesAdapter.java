@@ -69,6 +69,7 @@ public class RecmdNewesAdapter extends BaseAdapter {
         if (bean != null) {
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.timeTv.setText(bean.getTime());
+            viewHolder.countTv.setText(bean.getReplycount()+""+"点赞");
             //   Picasso.with(context).load(bean.getSmallpic()).into(viewHolder.iv);
             //2.Glide
             //能加载uri path file等格式的图片

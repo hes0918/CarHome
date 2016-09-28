@@ -1,10 +1,14 @@
 package com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
+import com.lanou3g.dllo.athm.controler.activity.RecmBullAty;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.RecmdBulletinAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.model.bean.RecmdBulletinBean;
@@ -75,6 +79,18 @@ public class BulletinFragment extends AbsBaseFragment {
 
             }
         });
-
+        //行布局点击事件 跳转到二级界面
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               RecmdBulletinBean.ResultBean.ListBean bean = (RecmdBulletinBean.ResultBean.ListBean) parent.getItemAtPosition(position);
+               String a = bean.getId() +"";
+               Intent intent = new Intent(context, RecmBullAty.class);
+               intent.putExtra("id",a);
+               startActivity(intent);
+           }
+       });
     }
+
+
 }

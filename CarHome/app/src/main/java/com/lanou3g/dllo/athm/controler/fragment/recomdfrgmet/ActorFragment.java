@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -127,6 +128,8 @@ public class ActorFragment extends AbsBaseFragment implements View.OnClickListen
                 popupPW();
             }
         });
+
+
     }
     /**
      设置轮播图数据
