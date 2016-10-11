@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.athm.controler.fragment.forumfragment;
 
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -125,6 +127,15 @@ public class SiftRecommendFragment extends AbsBaseFragment {
             }
 
         });
+
+//        //PW listView行布局点击事件
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//            }
+//        });
+
     }
     //弹出窗口
     private void popupPW() {
@@ -167,6 +178,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         //参数3 4:X,Y的位置
         pw.showAtLocation(rootView, Gravity.RIGHT,0,0);
     }
+
 
     //为RecyclerView设置数据
     private void addRecyclerView() {

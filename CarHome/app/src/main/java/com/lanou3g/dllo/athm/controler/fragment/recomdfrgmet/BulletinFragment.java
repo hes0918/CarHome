@@ -2,6 +2,7 @@ package com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -85,6 +86,7 @@ public class BulletinFragment extends AbsBaseFragment {
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                RecmdBulletinBean.ResultBean.ListBean bean = (RecmdBulletinBean.ResultBean.ListBean) parent.getItemAtPosition(position);
                String a = bean.getId() +"";
+               Log.d("BulletinFragment", a);
                Intent intent = new Intent(context, RecmBullAty.class);
                intent.putExtra("id",a);
                startActivity(intent);

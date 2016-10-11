@@ -14,8 +14,10 @@
         />
     <ImageView
         android:id="@+id/item_bulletin_content_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:layout_height="180dp"
         android:layout_margin="10dp"
         android:src="@android:mipmap/sym_def_app_icon"/>
     <RelativeLayout

@@ -19,12 +19,12 @@
 
         <ImageView
             android:id="@+id/forum_sift_image"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="12dp"
+            android:layout_width="25dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginRight="12dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/umeng_socialize_example_setting" />
+            android:layout_height="25dp"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/fangkuai" />
 
     </LinearLayout>
 

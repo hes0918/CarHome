@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".controler.activity.RecmNewesAty" />
         <activity android:name=".controler.activity.RecmBullAty" />
-        <activity android:name=".controler.activity.RecmNewsAty"></activity>
+        <activity android:name=".controler.activity.RecmNewsAty" />
+        <activity android:name=".controler.activity.RecmVideoAty" />
+        <activity android:name=".controler.activity.FroumSiftAllAty" />
+        <activity android:name=".controler.activity.MeCollectAty"></activity>
     </application>
 
 </manifest>

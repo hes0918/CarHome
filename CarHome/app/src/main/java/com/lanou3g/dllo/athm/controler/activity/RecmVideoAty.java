@@ -13,24 +13,23 @@ import android.widget.Toast;
 
 import com.lanou3g.dllo.athm.R;
 
-public class RecmNewsAty extends AbsBaseActivity implements View.OnClickListener {
+public class RecmVideoAty extends AbsBaseActivity implements View.OnClickListener {
     private WebView webView;
     //web的标题栏
-    private ImageView xzImageView,scImageView;
+    private ImageView xzImageView, scImageView;
     private TextView titleTv;
-
 
     @Override
     protected int setLayout() {
-        return R.layout.activity_recm_news_aty;
+        return R.layout.activity_recm_video_aty;
     }
 
     @Override
     protected void initView() {
-        webView =byView(R.id.recm_news_web);
-        xzImageView = byView(R.id.news_aty_xz_iv);
-        scImageView = byView(R.id.news_aty_sc_iv);
-        titleTv = byView(R.id.news_aty_title_tv);
+        webView = byView(R.id.video_web);
+        xzImageView = byView(R.id.video_aty_xz_iv);
+        scImageView = byView(R.id.video_aty_sc_iv);
+        titleTv = byView(R.id.video_aty_title_tv);
     }
 
     @Override
@@ -39,15 +38,12 @@ public class RecmNewsAty extends AbsBaseActivity implements View.OnClickListener
         xzImageView.setOnClickListener(this);
         scImageView.setOnClickListener(this);
 
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         intent.getStringExtra("id");
-        String url = "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n"
-                + intent.getStringExtra("id") + "-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html";
+        String url = "http://v.autohome.com.cn/v-" + intent.getStringExtra("id") + ".html";
         webView.loadUrl(url);
-
-
         //设置不跳转浏览器,在当前Aty上显示
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
 
         });
         //设置WebView加载网页的属性
@@ -74,19 +70,21 @@ public class RecmNewsAty extends AbsBaseActivity implements View.OnClickListener
         webSettings.setDisplayZoomControls(true);
         // 设置默认字体大小
         webSettings.setDefaultFontSize(12);
+
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.news_aty_title_tv://返回键
+            case R.id.video_aty_title_tv://返回键
                 finish();
                 break;
-            case R.id.news_aty_sc_iv:
+            case R.id.video_aty_sc_iv:
                 scImageView.setSelected(true);
                 Toast.makeText(this, "已收藏", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.news_aty_xz_iv:
+            case R.id.video_aty_xz_iv:
                 Toast.makeText(this, "正在下载", Toast.LENGTH_SHORT).show();
                 break;
         }

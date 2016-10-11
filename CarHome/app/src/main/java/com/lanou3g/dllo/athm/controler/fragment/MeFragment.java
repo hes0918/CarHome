@@ -1,6 +1,10 @@
 package com.lanou3g.dllo.athm.controler.fragment;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.lanou3g.dllo.athm.R;
+import com.lanou3g.dllo.athm.controler.activity.MeCollectAty;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.MeAdapter;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,5 +41,22 @@ public class MeFragment extends AbsBaseFragment {
         datas.add("设置");
         adapter.setDatas(datas);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        Intent intent = new Intent(context, MeCollectAty.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+        });
     }
+
+
 }

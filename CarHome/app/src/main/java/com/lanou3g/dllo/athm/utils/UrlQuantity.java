@@ -18,6 +18,10 @@ public class UrlQuantity {
      */
     public  static  final String BULLETIN="http://app.api.autohome.com.cn/autov4.8.8/news/fastnewslist-pm1-b0-l0-s20-lastid0.json";
     /**
+     * 视频
+     */
+    public  static  final  String VIDEO= "http://app.api.autohome.com.cn/autov4.8.8/news/videolist-pm1-vt0-s30-lastid0.json";
+    /**
      * 新闻
      */
     public  static  final String NEWS="http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt1-p1-s30-l0.json";

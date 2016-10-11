@@ -3,9 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lanou3g.dllo.athm.controler.activity.RecmNewsAty">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/news_aty_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="返回"
+            android:textColor="@color/colorLan" />
+
+        <ImageView
+            android:id="@+id/news_aty_xz_iv"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:src="@mipmap/known1" />
+
+        <ImageView
+            android:id="@+id/news_aty_sc_iv"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@id/newes_aty_xz_iv"
+            android:src="@drawable/web_sc"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#cfcccc" />
     <WebView
-        android:id="@+id/recm_news_wed"
+        android:id="@+id/recm_news_web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

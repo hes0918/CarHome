@@ -1,21 +1,30 @@
 package com.lanou3g.dllo.athm.controler.activity;
 
 import android.content.Intent;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
-import com.lanou3g.dllo.athm.model.bean.BullDetailbean;
+import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.RecmdBullAtyAdapter;
+import com.lanou3g.dllo.athm.model.bean.BullAtyBean;
 import com.lanou3g.dllo.athm.model.net.VolleyInstance;
 import com.lanou3g.dllo.athm.model.net.VolleyResult;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/9/26.
  */
-public class RecmBullAty extends AbsBaseActivity {
-    private WebView webView;
+public class RecmBullAty extends AbsBaseActivity implements View.OnClickListener {
+    private ListView listView;
+    private RecmdBullAtyAdapter atyAdapter;
+    //web的标题栏
+    private ImageView xzImageView,scImageView;
+    private TextView titleTv;
     @Override
     protected int setLayout() {
         return R.layout.activity_recm_bull;
@@ -23,12 +32,21 @@ public class RecmBullAty extends AbsBaseActivity {
 
     @Override
     protected void initView() {
-        webView = byView(R.id.bulletin_web);
-
+        listView = byView(R.id.bull_aty_list_view);
+        xzImageView = byView(R.id.bull_aty_xz_iv);
+        scImageView = byView(R.id.bull_aty_sc_iv);
+        titleTv = byView(R.id.bull_aty_title_tv);
     }
 
     @Override
     protected void initDatas() {
+        titleTv.setOnClickListener(this);
+        xzImageView.setOnClickListener(this);
+        scImageView.setOnClickListener(this);
+        //创建适配器
+        atyAdapter = new RecmdBullAtyAdapter(this);
+        //绑定适配器
+        listView.setAdapter(atyAdapter);
 
         Intent intent =getIntent();
         intent.getStringExtra("id");
@@ -40,9 +58,9 @@ public class RecmBullAty extends AbsBaseActivity {
             public void success(String resultStr) {
 
                 Gson gson = new Gson();
-                BullDetailbean bean = gson.fromJson(resultStr,BullDetailbean.class);
-                BullDetailbean.ResultBean data = bean.getResult();
-
+                BullAtyBean bean = gson.fromJson(resultStr,BullAtyBean.class);
+                List<BullAtyBean.ResultBean.MessagelistBean> datas = bean.getResult().getMessagelist();
+                atyAdapter.setDatas(datas);
             }
 
             @Override
@@ -52,34 +70,22 @@ public class RecmBullAty extends AbsBaseActivity {
         });
 
 
-        webView.loadUrl(url);
-        //设置不跳转浏览器,在当前Aty上显示
-        webView.setWebViewClient(new WebViewClient(){
-        });
-        //设置WebView加载网页的属性
-        //WebSettings
-        WebSettings webSettings = webView.getSettings();
-        // 让WebView能够执行javaScript
-        webSettings.setJavaScriptEnabled(true);
-        // 让JavaScript可以自动打开windows
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        // 设置缓存
-        webSettings.setAppCacheEnabled(true);
-        // 设置缓存模式,一共有四种模式
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        // 设置缓存路径
-//        webSettings.setAppCachePath("");
-        // 支持缩放(适配到当前屏幕)
-        webSettings.setSupportZoom(true);
-        // 将图片调整到合适的大小
-        webSettings.setUseWideViewPort(true);
-        // 支持内容重新布局,一共有四种方式
-        // 默认的是NARROW_COLUMNS
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        // 设置可以被显示的屏幕控制
-        webSettings.setDisplayZoomControls(true);
-        // 设置默认字体大小
-        webSettings.setDefaultFontSize(12);
+    }
+    //标题的点击事件
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bull_aty_title_tv://返回键
+                finish();
+                break;
+            case R.id.bull_aty_sc_iv:
+                scImageView.setSelected(true);
+                Toast.makeText(this, "已收藏", Toast.LENGTH_SHORT).show();
 
+                break;
+            case R.id.bull_aty_xz_iv:
+                Toast.makeText(this, "正在下载", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

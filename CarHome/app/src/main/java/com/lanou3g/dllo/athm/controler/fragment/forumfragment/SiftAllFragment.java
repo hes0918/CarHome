@@ -1,10 +1,15 @@
 package com.lanou3g.dllo.athm.controler.fragment.forumfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.athm.R;
+import com.lanou3g.dllo.athm.controler.activity.FroumSiftAllAty;
+import com.lanou3g.dllo.athm.controler.activity.RecmNewesAty;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.ForumSiftAllAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.AbsBaseFragment;
 import com.lanou3g.dllo.athm.model.bean.ForumSiftAllBean;
@@ -74,6 +79,16 @@ public class SiftAllFragment extends AbsBaseFragment {
             @Override
             public void failure() {
 
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ForumSiftAllBean.ResultBean.ListBean bean = (ForumSiftAllBean.ResultBean.ListBean) parent.getItemAtPosition(position);
+                String a = bean.getBbsid() +"";
+                Intent intent = new Intent(context, FroumSiftAllAty.class);
+                intent.putExtra("id",a);
+                startActivity(intent);
             }
         });
     }

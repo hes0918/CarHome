@@ -107,10 +107,11 @@ public class NewestFrgment extends AbsBaseFragment {
 
                 RecmdNewesBean.ResultBean.NewslistBean
                         bean  = (RecmdNewesBean.ResultBean.NewslistBean) parent.getItemAtPosition(position);
-                String a = bean.getId() +"";
-                Log.d("NewestFrgment", "a:" + a);
+                int a = bean.getId();
+                String t = bean.getTitle();
                 Intent intent = new Intent(context, RecmNewesAty.class);
                 intent.putExtra("id",a);
+                intent.putExtra("title",t);
                 startActivity(intent);
             }
         });
