@@ -3,6 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="#fff"
     android:layout_height="match_parent">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/me_qq_tx_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/me_qq_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+       />
     <LinearLayout
 
         android:layout_margin="10dp"
@@ -11,7 +23,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,7 +45,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="100dp"
+            android:id="@+id/me_qq_root"
+            android:layout_marginTop="50dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -55,7 +68,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

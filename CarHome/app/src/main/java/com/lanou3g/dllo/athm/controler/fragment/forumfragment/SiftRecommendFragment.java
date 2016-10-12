@@ -49,7 +49,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
     //定义RecyclerView
     private RecyclerView recyclerView;
     //定义占位布局的Fragment
-//    private SiftAllFragment siftAllFragment;
+
     //定义适配器
     private SiftRecyclerAdapter adapter;
     //碎片管理者
@@ -128,13 +128,7 @@ public class SiftRecommendFragment extends AbsBaseFragment {
 
         });
 
-//        //PW listView行布局点击事件
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//            }
-//        });
+
 
     }
     //弹出窗口
@@ -177,6 +171,24 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         //参数2:Gravity 重心
         //参数3 4:X,Y的位置
         pw.showAtLocation(rootView, Gravity.RIGHT,0,0);
+
+        //PW listView行布局点击事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //联动跳到rv界面
+                recyclerView.smoothScrollToPosition(position);
+                //碎片管理者
+                manager = getChildFragmentManager();
+                transaction = manager.beginTransaction();
+                transaction.replace(R.id.forum_sift_frame, SiftAllFragment.newInstance(list[position]));
+                transaction.commit();
+                //关闭PopWindow
+                pw.dismiss();
+
+            }
+        });
     }
 
 
@@ -271,4 +283,5 @@ public class SiftRecommendFragment extends AbsBaseFragment {
         datas.add("沧海遗珠");
         dialogAdapter.setDatas(datas);
     }
+
 }
