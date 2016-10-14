@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.model.db.CarHomeBean;
 import com.lanou3g.dllo.athm.model.db.LiteOrmInstance;
+import com.lanou3g.dllo.athm.utils.CarToast;
 
 import java.util.List;
 
@@ -116,14 +117,14 @@ public class RecmNewesAty extends AbsBaseActivity implements View.OnClickListene
                     if (bean.size()>0){
                     }else {
                         LiteOrmInstance.getLiteOrmInstance().insert(new CarHomeBean(id,title,url));
-                        Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+                        CarToast.shortMsg("收藏成功");
                     }
                 }
 
 
                 break;
             case R.id.newes_aty_xz_iv:
-                Toast.makeText(this, "正在下载", Toast.LENGTH_SHORT).show();
+                CarToast.shortMsg("不能下载");
                 break;
         }
     }

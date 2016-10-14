@@ -134,8 +134,9 @@ public class FindFragment extends AbsBaseFragment {
                 GridLayoutManager lkManager = new GridLayoutManager(context,2);
                 lkRecyclerView.setLayoutManager(lkManager);
                 lkRecyclerView.setAdapter(lkAdapter);
+                //添加猜你喜欢头布局
                 listView.addHeaderView(lkHeadView);
-
+                //解析+添加为我推荐头布局
                 FindBean wwBean = gson.fromJson(resultStr,FindBean.class);
                 lkData= wwBean.getResult().getModulelist().get(1).getList();
                 wwAdapter = new FindHeadWwAdapter(context);
@@ -181,7 +182,7 @@ public class FindFragment extends AbsBaseFragment {
         });
     }
 
-    //利用封装的网络工具类请求Listview最新的数据
+    //利用封装的网络工具类请求Listview(商品详情)最新的数据
     private void listviewFindVolley() {
         VolleyInstance.getInstance().startRequest(UrlQuantity.FIND, new VolleyResult() {
             @Override

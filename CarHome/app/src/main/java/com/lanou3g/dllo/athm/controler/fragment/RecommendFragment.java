@@ -1,11 +1,16 @@
 package com.lanou3g.dllo.athm.controler.fragment;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
+
 import com.lanou3g.dllo.athm.R;
+import com.lanou3g.dllo.athm.controler.activity.RecmSerch;
 import com.lanou3g.dllo.athm.controler.adapter.pager_adapter.RecmdPagerAdapter;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.ActorFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.BulletinFragment;
-import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewestFrgment;
+import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewestFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.NewsFragment;
 import com.lanou3g.dllo.athm.controler.fragment.recomdfrgmet.VideoFragment;
 import com.lanou3g.dllo.athm.utils.UrlQuantity;
@@ -23,6 +28,8 @@ public class RecommendFragment extends AbsBaseFragment {
     private ViewPager viewPager;
     private List<AbsBaseFragment> fragments;
     private RecmdPagerAdapter adapter ;
+    //搜索
+    private ImageView imageView;
 
 
 
@@ -36,13 +43,21 @@ public class RecommendFragment extends AbsBaseFragment {
     protected void initView() {
         tabLayout = byview(R.id.recommend_tab);
         viewPager = byview(R.id.recommend_vp);
+        imageView = byview(R.id.fragment_recommend_imageFind);
 
     }
 
    @Override
    protected void initDatas() {
+       imageView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(context, RecmSerch.class);
+               startActivity(intent);
+           }
+       });
        fragments = new ArrayList<>();
-       fragments.add(NewestFrgment.newInstance("最新"));
+       fragments.add(NewestFragment.newInstance("最新"));
        fragments.add(ActorFragment.newInstance("优创"));
        fragments.add(BulletinFragment.newInstance("快报"));
        fragments.add(VideoFragment.newInstance("视频"));

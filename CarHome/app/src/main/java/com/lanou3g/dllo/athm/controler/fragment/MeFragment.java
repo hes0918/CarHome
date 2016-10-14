@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.lanou3g.dllo.athm.R;
 import com.lanou3g.dllo.athm.controler.activity.MeCollectAty;
 import com.lanou3g.dllo.athm.controler.adapter.listview_adapter.MeAdapter;
+import com.lanou3g.dllo.athm.model.bean.RecmdNewesBean;
+import com.lanou3g.dllo.athm.model.db.CarHomeBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -103,8 +105,11 @@ public class MeFragment extends AbsBaseFragment {
                     case 1:
                         break;
                     case 2:
+
+
                         Intent intent = new Intent(context, MeCollectAty.class);
                         startActivity(intent);
+
                         break;
                 }
             }

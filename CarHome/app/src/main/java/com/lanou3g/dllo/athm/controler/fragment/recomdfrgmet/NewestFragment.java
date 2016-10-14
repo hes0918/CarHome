@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +28,7 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 推荐-最新页面
  */
-public class NewestFrgment extends AbsBaseFragment {
+public class NewestFragment extends AbsBaseFragment {
     private RecmdNewesAdapter adapter;//listview适配器
     private HomeListView listView;
 
@@ -43,13 +42,13 @@ public class NewestFrgment extends AbsBaseFragment {
     private NewestRotateVpAdapter vpAdapter;
 
     //new一个单例
-    public static NewestFrgment newInstance(String str) {
+    public static NewestFragment newInstance(String str) {
         Bundle args = new Bundle();
         //将String存储到Bundle中
         //Bundle是一个轻量级的存储类
         args.putString("text",str);
 
-        NewestFrgment fragment = new NewestFrgment();
+        NewestFragment fragment = new NewestFragment();
         //把这个数据创给fragment
         fragment.setArguments(args);
         return fragment;

@@ -24,11 +24,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controler.activity.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".controler.activity.WelcomeActivity">
             <intent-filter>
@@ -65,7 +67,7 @@
         <activity android:name=".controler.activity.RecmVideoAty" />
         <activity android:name=".controler.activity.FroumSiftAllAty" />
         <activity android:name=".controler.activity.MeCollectAty" />
-
+        <activity android:name=".controler.activity.RecmSerch"></activity>
     </application>
 
 </manifest>

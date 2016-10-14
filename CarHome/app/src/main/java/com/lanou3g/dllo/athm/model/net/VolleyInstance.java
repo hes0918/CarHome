@@ -51,6 +51,7 @@ public class VolleyInstance {
             synchronized (VolleyInstance.class){
                 //如果该对象还是null
                 if (instance ==null){
+                    //则创建一个新的对象
                     instance = new VolleyInstance();
                 }
             }

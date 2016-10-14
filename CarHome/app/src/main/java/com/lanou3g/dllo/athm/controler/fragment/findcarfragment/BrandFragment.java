@@ -145,6 +145,7 @@ public class BrandFragment extends AbsBaseFragment {
                     @Override
                     public void success(String resultStr) {
                         Gson gson = new Gson();
+                        //解析
                         FindCarBrandDrawerBean drawerBean = gson.fromJson(resultStr,FindCarBrandDrawerBean.class);
                         List<FindCarBrandDrawerBean.ResultBean.FctlistBean> beans = drawerBean.getResult().getFctlist();
                         for (int i = 0; i < beans.size(); i++) {

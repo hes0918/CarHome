@@ -114,12 +114,6 @@ public class WelcomeActivity extends AbsBaseActivity {
         }
     }
 
-
-
-
-
-
-
     private  class  TimeTask extends AsyncTask<Integer,Integer,String>{
 
 
@@ -152,6 +146,7 @@ public class WelcomeActivity extends AbsBaseActivity {
             super.onPostExecute(s);
             Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
 
         }
     }
